@@ -3,6 +3,7 @@ const videoGrid = document.getElementById('video-grid');
 const myPeer = new Peer();
 const myVideo = document.createElement('video');
 myVideo.muted = false;
+
 const peers = {};
 navigator.mediaDevices.getUserMedia({
   video: true,
