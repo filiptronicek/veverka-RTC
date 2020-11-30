@@ -58,7 +58,7 @@ function connectToNewUser(userId, stream) {
 }
 
 function addVideoStream(video, stream) {
-    console.log("creating " + video.id);
+    console.log(`creating ${video.id}`);
     video.srcObject = stream;
     video.addEventListener('loadedmetadata', () => {
         video.play();
