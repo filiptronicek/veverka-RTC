@@ -4,6 +4,7 @@ const myPeer = new Peer();
 const myVideo = document.createElement('video');
 
 myVideo.muted = true;
+myVideo.id = "me-vid";
 
 const peers = {};
 navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(stream => {
@@ -13,6 +14,7 @@ navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(stream => {
         call.answer(stream);
         const video = document.createElement('video');
         call.on('stream', userVideoStream => {
+            video.id = "hello-from-the-other-side";
             addVideoStream(video, userVideoStream);
         });
     });
@@ -25,8 +27,9 @@ navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(stream => {
 socket.on('user-disconnected', userId => {
     if (peers[userId]) {
         peers[userId].close();
-        document.getElementById(userId).remove();
+        console.log(`Trying to remove ${userId}`);
     }
+    document.getElementById("hello-from-the-other-side").remove() || document.getElementById(userId).remove();
 });
 
 myPeer.on('open', id => {
