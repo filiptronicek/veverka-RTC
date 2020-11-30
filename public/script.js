@@ -39,6 +39,9 @@ function connectToNewUser(userId, stream) {
   call.on('stream', userVideoStream => {
     addVideoStream(video, userVideoStream);
   });
+  myPeer.on('close', () => {
+    video.remove();
+  });
   call.on('close', () => {
     video.remove();
   });
