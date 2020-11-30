@@ -29,6 +29,8 @@ socket.on('user-disconnected', userId => {
         peers[userId].close();
         console.log(`Trying to remove ${userId}`);
     }
+    const toRemove = document.getElementById("hello-from-the-other-side") || document.getElementById(userId);
+    toRemove.remove();
 });
 
 myPeer.on('open', id => {
