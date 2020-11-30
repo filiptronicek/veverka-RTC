@@ -29,10 +29,10 @@ socket.on('user-disconnected', userId => {
         peers[userId].close();
         console.log(`Trying to remove ${userId}`);
     }
-    document.getElementById("hello-from-the-other-side").remove() || document.getElementById(userId).remove();
 });
 
 myPeer.on('open', id => {
+    console.log(`My peer ID is: ${id}`);
     socket.emit('join-room', ROOM_ID, id);
 });
 
@@ -58,6 +58,7 @@ function connectToNewUser(userId, stream) {
 }
 
 function addVideoStream(video, stream) {
+    console.log("creating " + video.id);
     video.srcObject = stream;
     video.addEventListener('loadedmetadata', () => {
         video.play();
