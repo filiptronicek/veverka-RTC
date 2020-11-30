@@ -4,8 +4,10 @@ const myPeer = new Peer(undefined, {
   host: '/',
   port: '3001'
 });
+
 const myVideo = document.createElement('video');
 myVideo.muted = false;
+
 const peers = {};
 navigator.mediaDevices.getUserMedia({
   video: true,
